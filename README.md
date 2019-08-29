@@ -3,8 +3,8 @@
 
 # 1. create directory and copy reestr.go in it
 inside fabric-samples/chaincode<br/>
-$ mkdir reestr && cd reestr<br/>
-$ <put the reestr.go file here> from chaincode<br/>
+$ mkdir reestr && cd reestr <br/>
+$ <put the chaincode reestr.go enrollAdmin.js, registerUser.js, saveNewDoc.js and checkDoc.js and checkHash.js here> from chaincode/reestr <br/>
 
 # 2. create application folder
 inside fabric-samples<br/>
@@ -13,7 +13,7 @@ $ mkdir reestr && cd reestr<br/>
 # 3. init all dependency for application
 inside fabric-samples/reestr<br/>
 $ npm init -y<br/>
-$ npm install fabric-ca-client fabric-network -S<br/>
+$ npm install fabric-ca-client fabric-network -S <br/>
 $ <put the five files enrollAdmin.js, registerUser.js, saveNewDoc.js and checkDoc.js and checkHash.js here> from reestr<br/>
 
 # 4. Start fabrich basic network

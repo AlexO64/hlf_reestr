@@ -4,7 +4,7 @@
 # 1. create directory and copy reestr.go in it
 inside fabric-samples/chaincode<br/>
 $ mkdir reestr && cd reestr<br/>
-$ <put the reestr.go file here> from chaincode/reestr<br/>
+$ <put the reestr.go file here> from chaincode<br/>
 
 # 2. create application folder
 inside fabric-samples<br/>

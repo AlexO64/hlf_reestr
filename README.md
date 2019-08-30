@@ -5,6 +5,8 @@
 inside fabric-samples/chaincode<br/>
 $ mkdir reestr && cd reestr <br/>
 $ <put the chaincode reestr.go enrollAdmin.js, registerUser.js, saveNewDoc.js and checkDoc.js and checkHash.js here> from chaincode/reestr <br/>
+$ copy all files from chaincode/abac/go/vendor to chaincode/reestr/vendor<br/>
+$ change last line in vendor.json file from "rootPath": "github.com/hyperledger/fabric-samples/chaincode/abac/go" to"rootPath": "github.com/hyperledger/fabric-samples/chaincode/reestr"<br/>
 
 # 2. create application folder
 inside fabric-samples<br/>
@@ -16,6 +18,7 @@ $ rm -R wallet
 $ npm init -y<br/>
 $ npm install fabric-ca-client fabric-network -S <br/>
 $ <put the five files enrollAdmin.js, registerUser.js, saveNewDoc.js and checkDoc.js and checkHash.js here> from reestr<br/>
+
 
 # 4. Start fabrich basic network
 inside fabric-samples/basic-network<br/>

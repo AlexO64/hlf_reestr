@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/hyperledger/fabric/core/chaincode/shim"
+	"github.com/hyperledger/fabric/core/chaincode/shim/ext/cid"
 	sc "github.com/hyperledger/fabric/protos/peer"
 )
 
@@ -16,6 +17,8 @@ type SmartContract struct {
 // Define the DocRecord Structure, which holds the signature of the document
 // signed by issuer, and the time when this record is created
 type DocRecord struct {
+	MSPID  string `json:"mspid"`
+	UserId string `json:"clientid"`
 	TrxUid string `json:"uid"`
 	Hash   string `json:"hash"`
 	Time   string `json:"time"`
@@ -63,7 +66,6 @@ func (s *SmartContract) queryDocRecord(APIstub shim.ChaincodeStubInterface, args
 }
 
 func (s *SmartContract) createDocRecord(APIstub shim.ChaincodeStubInterface, args []string) (string, error) {
-
 	if len(args) != 1 {
 		return "", fmt.Errorf("Incorrect number of arguments. Expecting 1")
 	}
@@ -80,7 +82,17 @@ func (s *SmartContract) createDocRecord(APIstub shim.ChaincodeStubInterface, arg
 		return "", fmt.Errorf("trxId was not calculated: %s", args[0])
 	}
 
-	var docrecord = DocRecord{TrxUid: trxId, Hash: hashStr, Time: time.Now().Format(time.RFC3339)}
+	mspid, errMSPID := cid.GetMSPID(APIstub)
+	if errMSPID != nil {
+		return "", fmt.Errorf("cannot get MSPID for submitted transactions.")
+	}
+
+	clientId, err := cid.GetID(APIstub)
+	if err != nil {
+		return "", fmt.Errorf("cannot get ClientId for submitted transactions.")
+	}
+
+	var docrecord = DocRecord{MSPID: mspid, UserId: clientId, TrxUid: trxId, Hash: hashStr, Time: time.Now().Format(time.RFC3339)}
 	docrecordAsBytes, _ := json.Marshal(docrecord)
 	APIstub.PutState(trxId, docrecordAsBytes)
 

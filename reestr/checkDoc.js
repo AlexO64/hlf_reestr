@@ -43,6 +43,8 @@ async function main() {
         console.log("Transaction has been evaluated");
         var resultJSON = JSON.parse(result);
         console.log("Doc record found, result is uid: " + resultJSON.uid);
+        console.log("MSPID: " + resultJSON.mspid);
+        console.log("ClientID: " + resultJSON.clientid);
         console.log("Hash: " + resultJSON.hash);
         console.log("Time: " + resultJSON.time);
         

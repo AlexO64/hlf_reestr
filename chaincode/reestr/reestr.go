@@ -69,7 +69,7 @@ func (s *SmartContract) createDocRecord(APIstub shim.ChaincodeStubInterface, arg
 	}
 
 	hashBytes := sha256.Sum256([]byte(args[0]))
-	hashStr := string(hashBytes[:])
+	hashStr := fmt.Sprintf("%x", hashBytes[:])
 
 	if len(hashStr) == 0 {
 		return "", fmt.Errorf("hashStr was not calculated: %s", args[0])
@@ -94,7 +94,9 @@ func (s *SmartContract) hashDocRecord(APIstub shim.ChaincodeStubInterface, args 
 	}
 
 	hashBytes := sha256.Sum256([]byte(args[0]))
-	return shim.Success(hashBytes[:])
+	// converto to string
+	hashStr := fmt.Sprintf("%x", hashBytes[:])
+	return shim.Success([]byte(hashStr))
 }
 
 func main() {

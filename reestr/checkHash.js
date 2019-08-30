@@ -41,7 +41,7 @@ async function main() {
         // Submit the specified transaction.
         const result = await contract.evaluateTransaction('hashDocRecord', stringToHash);
         console.log("Transaction has been evaluated");
-        console.log("Hash calculated, result is " + JSON.stringify(result));
+        console.log("Hash calculated, result is " + result);
         
         await gateway.disconnect();
     } catch (error) {

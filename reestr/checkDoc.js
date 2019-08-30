@@ -42,7 +42,9 @@ async function main() {
         const result = await contract.evaluateTransaction('queryDocRecord', trxuid);
         console.log("Transaction has been evaluated");
         var resultJSON = JSON.parse(result);
-        console.log("Doc record found, result is " + resultJSON);
+        console.log("Doc record found, result is uid: " + resultJSON.uid);
+        console.log("Hash: " + resultJSON.hash);
+        console.log("Time: " + resultJSON.time);
         
         await gateway.disconnect();
 

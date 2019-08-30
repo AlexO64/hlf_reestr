@@ -12,6 +12,7 @@ $ mkdir reestr && cd reestr<br/>
 
 # 3. init all dependency for application
 inside fabric-samples/reestr<br/>
+$ rm -R wallet
 $ npm init -y<br/>
 $ npm install fabric-ca-client fabric-network -S <br/>
 $ <put the five files enrollAdmin.js, registerUser.js, saveNewDoc.js and checkDoc.js and checkHash.js here> from reestr<br/>
